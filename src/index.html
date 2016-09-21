@@ -4,37 +4,66 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
   <title>MedAgenda Doctor Application</title>
 
   <!-- bower:css -->
   <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css" />
   <link rel="stylesheet" href="bower_components/toastr/toastr.css" />
+  <link rel="stylesheet" href="bower_components/angular-toastr/dist/angular-toastr.css" />
+  <link rel="stylesheet" href="bower_components/bootstrap-switch/dist/css/bootstrap3/bootstrap-switch.css" />
+  <link rel="stylesheet" href="bower_components/angularMultipleSelect/build/multiple-select.min.css" />
+  <link rel="stylesheet" href="bower_components/animate.css/animate.css" />
   <!-- endbower -->
+
   <!-- inject:css -->
+  <link rel="stylesheet" href="styles/admin.style.css">
+  <link rel="stylesheet" href="styles/doctor.style.css">
+  <link rel="stylesheet" href="styles/patient.style.css">
   <link rel="stylesheet" href="styles/style.css">
   <!-- endinject -->
+
 </head>
-<body>
-  <div ng-include="'app/layout/navbar.html'"></div>
-
-
-  <ui-view></ui-view>
-
-
+<body class="background">
+  <!-- ui-view container div -->
+  <div class="container">
+    <div ui-view></div>
+  </div> <!-- ui-view container div -->
 
   <!-- bower:js -->
   <script src="bower_components/angular/angular.js"></script>
   <script src="bower_components/angular-ui-router/release/angular-ui-router.js"></script>
   <script src="bower_components/jquery/dist/jquery.js"></script>
+  <script src="bower_components/bootstrap/dist/js/bootstrap.js"></script>
   <script src="bower_components/bootbox/bootbox.js"></script>
   <script src="bower_components/ngBootbox/dist/ngBootbox.js"></script>
   <script src="bower_components/toastr/toastr.js"></script>
+  <script src="bower_components/angular-toastr/dist/angular-toastr.tpls.js"></script>
+  <script src="bower_components/angular-bootstrap/ui-bootstrap-tpls.js"></script>
+  <script src="bower_components/bootstrap-switch/dist/js/bootstrap-switch.js"></script>
+  <script src="bower_components/moment/moment.js"></script>
+  <script src="bower_components/angularMultipleSelect/build/multiple-select.min.js"></script>
   <!-- endbower -->
+
+  <script src="//cdnjs.cloudflare.com/ajax/libs/Chart.js/2.2.0/Chart.js"></script>
+  <script src="//cdn.jsdelivr.net/angular.chartjs/latest/angular-chart.min.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/numeral.js/1.4.5/numeral.min.js"></script>
+  
   <!-- inject:js -->
   <script src="app/app.js"></script>
-  <script src="app/core/data.factory.js"></script>
+  <script src="app/admin.dashboard/admin.dashboard.controller.js"></script>
+  <script src="app/admin.dashboard/admin.dashboard.factory.js"></script>
+  <script src="app/core/admin.doctor.factory.js"></script>
+  <script src="app/core/assignment.factory.js"></script>
+  <script src="app/core/doctor.checkin.factory.js"></script>
+  <script src="app/core/doctor.factory.js"></script>
+  <script src="app/core/doctor.specialty.factory.js"></script>
+  <script src="app/core/doctorCheckIn.factory.js"></script>
+  <script src="app/core/medical.fields.factory.js"></script>
+  <script src="app/core/patient.checkin.factory.js"></script>
+  <script src="app/core/patient.factory.js"></script>
   <script src="app/core/values.js"></script>
-  <script src="app/feature/feature.controller.js"></script>
+  <script src="app/layout/navbar.js"></script>
   <!-- endinject -->
 </body>
 </html>

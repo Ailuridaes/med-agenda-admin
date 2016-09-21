@@ -16,5 +16,23 @@
     "gulp-open": "^2.0.0",
     "gulp-util": "^3.0.7",
     "wiredep": "^4.0.0"
-  }
+  },
+  "dependencies": {
+    "bower": "^1.7.9",
+    "gulp": "^3.9.1",
+    "gulp-connect": "^5.0.0",
+    "gulp-inject": "^4.1.0",
+    "gulp-livereload": "^3.8.1",
+    "gulp-open": "^2.0.0",
+    "gulp-util": "^3.0.7",
+    "wiredep": "^4.0.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/MedAgenda/med-agenda-admin.git"
+  },
+  "bugs": {
+    "url": "https://github.com/MedAgenda/med-agenda-admin/issues"
+  },
+  "homepage": "https://github.com/MedAgenda/med-agenda-admin#readme"
 }

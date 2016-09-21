@@ -1,0 +1,170 @@
+<!--=====   ADMIN DASHBOARD PAGE  ========-->
+
+<!-- ================================= 
+  Dashboard Metrics
+================================== -->
+
+<!-- Dashboard body wigets -->
+<div class="col-sm-9 col-sm-offset-3 col-lg-10 col-lg-offset-2 main">
+    <div class="row">
+        <div class="col-lg-12">
+            <h1 class="page-header">Admin Dashboard</h1>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-xs-6 col-md-6 col-lg-6">
+            <div class="panel panel-teal panel-widget">
+                <div class="row no-padding">
+                    <div class="col-sm-3 col-lg-5 widget-left"> 
+                        <svg class="glyph stroked">
+                            <use></use>
+                        </svg>
+                    </div>
+                    <div class="col-sm-9 col-lg-7 widget-right">
+                        <div class="large">{{ adminDashboard.doctors.length }}</div>
+                        <a>
+                            <div class="text-muted" ui-sref="admin.doctor.detail">All Doctors</div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-xs-6 col-md-6 col-lg-6">
+            <div class="panel panel-red panel-widget">
+                <div class="row no-padding">
+                    <div class="col-sm-3 col-lg-5 widget-left">
+                        <svg class="glyph stroked app-window-with-content">
+                            <use></use>
+                        </svg>
+                    </div>
+                    <div class="col-sm-9 col-lg-7 widget-right">
+                        <div class="large">{{ adminDashboard.patients.length }}</div>
+                        <a>
+                            <div class="text-muted" ui-sref="admin.patient.detail">All Patients</div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Dashboard body widgets -->
+
+<!-- ================================= 
+  Dashboard Charts
+================================== -->
+
+    <!-- Patient time series chart-->
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="panel panel-success">
+                <div class="panel-heading">Monthly Patient Summary</div>
+                <div class="panel-body">
+                    <div class="canvas-wrapper">
+                        <canvas class="chart chart-bar" 
+                        chart-labels="adminDashboard.charts.monthlyPatientSummary.labels" 
+                        
+                        chart-data="adminDashboard.charts.monthlyPatientSummary.data" 
+
+                        chart-colors="adminDashboard.charts.colors" 
+
+                        chart-dataset-override="adminDashboard.charts.monthlyPatientSummary.overrides" 
+
+                        chart-options="adminDashboard.charts.monthlyPatientSummary.options" 
+
+                        id="line-chart"></canvas>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Patient time series chart--> 
+
+    <!-- Doctor Specialties Pie Chart-->
+    <div class="row">
+        <div class="col-md-12">
+            <div class="panel panel-primary">
+                <div class="panel-heading">Current Doctor Specialties</div>
+                <div class="panel-body">
+                    <div class="canvas-wrapper">
+                        <canvas class="chart chart-pie speciality-chart"
+                        chart-labels="adminDashboard.charts.currentDoctorSpecialties.labels"
+                        
+                        chart-data="adminDashboard.charts.currentDoctorSpecialties.data"  
+                        
+                        chart-colors="adminDashboard.charts.currentDoctorSpecialties.colors" 
+                        
+                        chart-dataset-override="adminDashboard.charts.currentDoctorSpecialties.overrides"
+
+                        chart-options="adminDashboard.charts.currentDoctorSpecialties.options"
+
+                        chart-legend="adminDashboard.charts.currentDoctorSpecialties.options.legend"
+
+                        id="doctor-pie-chart"></canvas>
+                        <table class="table table-condensed table-striped">
+                            <thead>
+                                <tr>
+                                    <td>Specialty Name</td>
+                                    <td># of Doctors</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr ng-repeat="specialty in adminDashboard.charts.currentDoctorSpecialties.labels">
+                                    <td>{{specialty}}</td>
+                                    <td>
+                                    <span ng-class="{'label-danger':adminDashboard.charts.currentDoctorSpecialties.data[$index] === 0} " class="label label-primary">
+                                    {{adminDashboard.charts.currentDoctorSpecialties.data[$index]}}    
+                                    </span>
+                                    </td>
+                                </tr>
+                            </tbody>
+
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--  Doctor Specialties Pie Chart-->
+
+        <!-- Patient Conditions Pie Chart-->
+        <div class="col-md-12">
+            <div class="panel panel-warning">
+                <div class="panel-heading">Yearly Patient Conditions</div>
+                <div class="panel-body">
+                    <div class="canvas-wrapper">
+                        <canvas class="chart chart-pie speciality-chart"
+                        chart-labels="adminDashboard.charts.yearlyPatientConditions.labels"
+                        
+                        chart-data="adminDashboard.charts.yearlyPatientConditions.data"  
+                        
+                        chart-colors="adminDashboard.charts.yearlyPatientConditions.colors" 
+                        
+                        chart-options="adminDashboard.charts.yearlyPatientConditions.options"
+
+                        chart-dataset-override="adminDashboard.charts.yearlyPatientConditions.overrides"
+
+                        id="patient-pie-chart"></canvas>
+                        <table class="table table-condensed table-striped">
+                            <thead>
+                                <tr>
+                                    <td>Patient Conditions</td>
+                                    <td># of Patients</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr ng-repeat="specialty in adminDashboard.charts.yearlyPatientConditions.labels track by $index">
+                                    <td>{{specialty}}</td>
+                                    <td>
+                                    <span ng-class="{'label-danger':adminDashboard.charts.yearlyPatientConditions.data[$index] === 0} " class="label label-primary">
+                                    {{adminDashboard.charts.yearlyPatientConditions.data[$index]}}    
+                                    </span>
+                                    </td>
+                                </tr>
+                            </tbody>
+
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>  <!--  Patient Conditions Pie Chart-->
+    </div>	<!-- Main row-->
+</div> <!-- Main column div 
