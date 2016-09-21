@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html ng-app="app" lang="en">
+<html ng-app="app" ui-router-styles lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -19,12 +19,13 @@
   <!-- inject:css -->
   <link rel="stylesheet" href="styles/admin.style.css">
   <link rel="stylesheet" href="styles/doctor.style.css">
+  <link rel="stylesheet" href="styles/login.background.css">
   <link rel="stylesheet" href="styles/patient.style.css">
   <link rel="stylesheet" href="styles/style.css">
   <!-- endinject -->
 
 </head>
-<body class="background">
+<body>
   <!-- ui-view container div -->
   <div class="container">
     <div ui-view></div>
@@ -43,6 +44,7 @@
   <script src="bower_components/bootstrap-switch/dist/js/bootstrap-switch.js"></script>
   <script src="bower_components/moment/moment.js"></script>
   <script src="bower_components/angularMultipleSelect/build/multiple-select.min.js"></script>
+  <script src="bower_components/angular-ui-router-styles/ui-router-styles.js"></script>
   <!-- endbower -->
 
   <script src="//cdnjs.cloudflare.com/ajax/libs/Chart.js/2.2.0/Chart.js"></script>

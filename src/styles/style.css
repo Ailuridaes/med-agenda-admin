@@ -35,6 +35,11 @@ h3, h4 {
 	font-weight: 300;
 }
 
+
+/*========================================
+*   Wrapper
+=========================================*/
+
 .wrapper {
     min-height: calc(100vh - 70px);
 }
@@ -206,19 +211,12 @@ ul.topnav li.icon {display: none;}
 }
 
 
+
 /*========================================
 *   Backgrounds
 =========================================*/
 
-.background {
-  background: linear-gradient(#fff, transparent 80%),
-   url("../img/emergency-room.jpg");
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-attachment: fixed;
-}
-
-.bg-primary {
+ */.bg-primary {
 	color: #1b3548;
 	background-color: #e9ecf2;
 }

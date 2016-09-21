@@ -8,7 +8,8 @@
             'ngBootbox',
             'ui.bootstrap',
             'chart.js',
-            'multipleSelect'
+            'multipleSelect',
+            'uiRouterStyles'
         ])
 
         // Configure all charts
@@ -35,18 +36,7 @@
             ChartJsProvider.setOptions(
                 // Show lines for line graphs
                 'line', {
-                  showLines: true,
-                  scales: {
-                      yAxes: [{
-                          display: true,
-                          ticks: {
-                              beginAtZero: true,
-                              steps: 10,
-                              stepValue: 1,
-                              max: 100
-                          }
-                      }]
-                  }     
+                  showLines: true,   
                 },
                 // Show legend for pie charts
                 'pie', {
@@ -64,14 +54,17 @@
                 .state('login', {
                     url: '/login',
                     // controller: 'AdminLoginController as adminLogin',
-                    templateUrl: '/app/admin.login/admin.login.html'
+                    templateUrl: '/app/admin.login/admin.login.html',
+                      data: {
+                        css: 'styles/login.background.css'
+                      }
                 })
 
         /////// ADMIN STATE  ////////
                 .state('admin', {
                     url: '/admin',
                     abstract: true,
-                    templateUrl: '/app/layout/admin.shell.html'
+                    templateUrl: '/app/layout/admin.shell.html'                   
                 })
                     // Admin dashboard  page
                     .state('admin.dashboard', {

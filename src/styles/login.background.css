@@ -1,0 +1,11 @@
+/*========================================
+*   Backgrounds
+=========================================*/
+
+body {
+  background: linear-gradient(#fff, transparent 80%),
+   url("../img/emergency-room.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-attachment: fixed;
+}
