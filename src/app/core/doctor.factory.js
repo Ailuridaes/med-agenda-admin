@@ -21,25 +21,24 @@
 
         function addDoctor(doctor) {
         	var defer = $q.defer();
-        
+
         	$http.post(apiUrl + '/doctors/', doctor)
         		.then(
         			function(response) {
         				defer.resolve(response.data);
-        				toastr.success('Successfully added doctor', 'Saved');
         			},
         			function(error) {
         				defer.reject(error);
         				toastr.error('Error adding doctor', 'Error');
         			}
         	);
-        
+
         	return defer.promise;
         }
 
     	function getAllDoctors() {
     		var defer = $q.defer();
-    	
+
     		$http.get(apiUrl + '/doctors/all')
     			.then(
     				function(response) {
@@ -50,13 +49,13 @@
     					toastr.error('Error getting doctors', 'Error');
     				}
     		);
-    	
+
     		return defer.promise;
         }
 
     	function getByDoctorId(id) {
 			var defer = $q.defer();
-		
+
 			$http.get(apiUrl + '/doctors/' + id)
 				.then(
 					function(response) {
@@ -67,13 +66,13 @@
 						toastr.error('Error getting doctor detail', 'Error');
 					}
             );
-		
+
     		return defer.promise;
-        }	
+        }
 
     	function updateDoctor(doctor) {
     	    var defer = $q.defer();
-    	
+
     		$http.put(apiUrl + '/doctors/' + doctor.doctorId, doctor)
     			.then(
     				function() {
@@ -85,7 +84,7 @@
     					toastr.error('Error updating doctor', 'Error');
     				}
     		);
-    	
+
     		return defer.promise;
         }
     }

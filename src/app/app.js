@@ -2,7 +2,7 @@
     'use strict';
 
     angular
-        .module('app', ['ui.router', 'toastr', 'ngBootbox', 'ui.bootstrap', 'multipleSelect'])
+        .module('app', ['ui.router', 'toastr', 'ngBootbox', 'ui.bootstrap', 'multipleSelect', 'toggle-switch'])
         .config(function($stateProvider, $urlRouterProvider){
 
             $urlRouterProvider.otherwise('/doctors');

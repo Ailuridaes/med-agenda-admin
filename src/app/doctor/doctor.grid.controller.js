@@ -5,20 +5,20 @@
         .module('app')
         .controller('DoctorGridController', DoctorGridController);
 
-    DoctorGridController.$inject = ['doctorFactory', 'doctorCheckInFactory', 'medicalFieldsFactory', 'specialtyFactory','$ngBootbox'];
+    DoctorGridController.$inject = ['doctorFactory', 'doctorCheckInFactory', 'medicalFieldsFactory', 'specialtyFactory','$ngBootbox', '$q', 'toastr'];
 
     /* @ngInject */
-    function DoctorGridController(doctorFactory, doctorCheckInFactory, medicalFieldsFactory, specialtyFactory, $ngBootbox) {
+    function DoctorGridController(doctorFactory, doctorCheckInFactory, medicalFieldsFactory, specialtyFactory, $ngBootbox, $q, toastr) {
         var vm = this;
         vm.title = 'DoctorGridController';
 
         // properties
+        var specialty = [];
         vm.doctors = {};
         vm.doctorCheckIns = {};
 
         // methods
         vm.addDoctor = addDoctor;
-        vm.updateDisableDoctor = updateDisableDoctor;
 
         activate();
 
@@ -59,31 +59,31 @@
             doctorFactory.addDoctor(doctor).then(
                 function(newDoctor){
                     $('#addDoctorModal').modal('hide');
+
+                    var promises = [];
+
                     for(var i = 0; i < vm.specialty.length; i++)
                     {
-                        var specialty.push({  'doctorId' : newDoctor.doctorId,
-                                              'medicalFieldId' : vm.specialty[i].medicalFieldId
-                                          });
-                    }
-                    specialtyFactory.addSpecialty(specialty).then(
-                        function(newSpecialty){
-                            newDoctor.checkIn = false;
-                            newDoctor.specialties = newSpecialty;
+                        specialty = {
+                          'doctorId' : newDoctor.doctorId,
+                          'medicalFieldId' : vm.specialty[i].medicalFieldId
+                        };
 
-                        }
-                    );
-                    vm.doctors.push(newDoctor);
+                        promises.push(specialtyFactory.addSpecialty(specialty));
+                    }
+
+                    $q.all(promises).then(function(specialties){
+                      newDoctor.checkIn = false;
+                      newDoctor.specialties = specialties;
+                      vm.doctors.push(newDoctor);
+                      toastr.success('Successfully added doctor', 'Saved');
+                    });
+
                     vm.doctor.firstName = null;
                     vm.doctor.lastName = null;
                     vm.doctor.email = null;
                     vm.doctor.telephone = null;
                 }
-            );
-        }
-
-        function updateDisableDoctor(doctor) {
-            doctorFactory.updateDoctor(doctor).then(
-                function(){}
             );
         }
     }

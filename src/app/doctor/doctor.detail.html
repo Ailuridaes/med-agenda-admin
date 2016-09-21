@@ -1,1 +1,63 @@
-<h1>Detail</h1>
+<div class="col-xs-10 col-lg-10	col-xs-offset-1 col-lg-offset-1">
+    <div class="panel panel-default">
+         <form class=""  ng-submit="doctorDetail.updateDoctor(doctorDetail.doctor)">
+           <div class="panel-heading clearfix">
+             <h3 class="panel-title pull-left" id="panelTitle">{{doctorDetail.doctor.lastName}}, {{doctorDetail.doctor.firstName}}, M.D.</h3>
+             <a ui-sref="doctors.grid" type="button" class="close"><span>&times;</span></a>
+           </div>
+           <div class="panel-body">
+             <div class="row">
+               <div class="col-xs-6 col-lg-6">
+                 <div class="form-group">
+                   <label for="">First Name</label>
+                   <input ng-model="doctorDetail.doctor.firstName" type="text" class="form-control" id="">
+                 </div>
+               </div>
+               <div class="col-xs-6 col-lg-6">
+                 <div class="form-group">
+                   <label for="">Last Name</label>
+                   <input ng-model="doctorDetail.doctor.lastName" type="text" class="form-control" id="">
+                 </div>
+               </div>
+             </div>
+             <div class="row">
+               <div class="col-xs-6 col-lg-6">
+                 <div class="form-group">
+                   <label for="">Email Address</label>
+                   <input ng-model="doctorDetail.doctor.email" type="text" class="form-control" id="">
+                 </div>
+               </div>
+               <div class="col-xs-6 col-lg-6">
+                 <div class="form-group">
+                   <label for="">Telephone</label>
+                   <input ng-model="doctorDetail.doctor.telephone" type="text" class="form-control" id="">
+                 </div>
+               </div>
+             </div>
+             <div class="form-group">
+               <label for="">Specialties</label>
+               <multiple-autocomplete ng-model="doctorDetail.doctorSpecialties"
+                 object-property="name"
+                 suggestions-arr="doctorDetail.medFields">
+               </multiple-autocomplete>
+             </div>
+             <div class="">
+               <label for="">Active Status</label>
+             </div>
+             <div class="">
+               <toggle-switch
+                 ng-model="doctorDetail.doctor.isDisabled"
+                 on-label="Yes"
+                 off-label="No">
+               </toggle-switch>
+             </div>
+           </div>
+           <div class="panel-footer">
+             <a ui-sref="doctors.grid" type="button" class="btn btn-default">Cancel</a>
+             <button type="submit" class="btn btn-primary">Submit Changes</button>
+           </div>
+      </form>
+    </div>
+</div>
+
+<div ui-view></div>

@@ -6,7 +6,7 @@
 					<h4 class="vcenter">Active Doctors</h4>
 				</div>
 				<div class="col-xs-6 col-lg-6">
-					<button type="button" class="btn btn-primary pull-right" id="verticalButton" data-toggle="modal" data-target="#addDoctorModal">Add Doctor</button>
+					<button type="button" class="btn btn-primary pull-right verticalButton" data-toggle="modal" data-target="#addDoctorModal">Add Doctor</button>
 				</div>
 			</div>
 			<table class="table table-hover">
@@ -17,11 +17,13 @@
 					</tr>
 				</thead>
 				<tbody>
-					<tr ng-repeat="doctor in doctorGrid.doctors | orderBy: ['-checkIn','lastName']"
+					<tr
+						ng-repeat="doctor in doctorGrid.doctors | orderBy: ['-checkIn','lastName']"
 						ng-class="{danger: doctor.checkIn == false,
-						 					success: doctor.checkIn == true}">
+						 					success: doctor.checkIn == true}"
+						ng-if="doctor.isDisabled != false">
 						<td>
-							{{doctor.lastName}}, {{doctor.firstName}}, M.D.
+							<a ui-sref="doctors.detail({doctorId : doctor.doctorId})">{{doctor.lastName}}, {{doctor.firstName}}, M.D.</a>
 						</td>
 						<td>
 							<div ng-repeat="specialty in doctor.specialties">
@@ -32,7 +34,38 @@
 				</tbody>
 			</table>
 		</uib-tab>
-		<uib-tab index="1" heading="Inactive Doctors">Inactive Doctors</uib-tab>
+		<uib-tab index="1" heading="Inactive Doctors">
+			<div class="row buttonRow">
+				<div class="col-xs-6 col-lg-6">
+					<h4 class="vcenter">Inactive Doctors</h4>
+				</div>
+				<div class="col-xs-6 col-lg-6">
+					<button type="button" class="btn btn-primary pull-right verticalButton" data-toggle="modal" data-target="#addDoctorModal">Add Doctor</button>
+				</div>
+			</div>
+			<table class="table table-hover">
+				<thead>
+					<tr>
+						<th>Name</th>
+						<th>Medical Specialty</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr
+						ng-repeat="doctor in doctorGrid.doctors | orderBy: ['-checkIn','lastName']"
+						ng-if="doctor.isDisabled != true">
+						<td>
+							<a ui-sref="doctors.detail({doctorId : doctor.doctorId})">{{doctor.lastName}}, {{doctor.firstName}}, M.D.</a>
+						</td>
+						<td>
+							<div ng-repeat="specialty in doctor.specialties">
+									{{specialty.medicalField.name}}
+							</div>
+						</td>
+					</tr>
+				</tbody>
+			</table>
+		</uib-tab>
 	</uib-tabset>
 <!-- <pre>{{doctorGrid.doctors[0].specialties | json}}</pre> -->
 
@@ -42,7 +75,7 @@
 <div class="modal fade" id="addDoctorModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
-			<form action="" role="form" ng-init="doctorGrid.doctor.isDisabled = true" ng-submit="doctorGrid.addDoctor(doctorGrid.doctor)" >
+	 <form action="" role="form" ng-init="doctorGrid.doctor.isDisabled = true" ng-submit="doctorGrid.addDoctor(doctorGrid.doctor)" >
 	      <div class="modal-header">
 	        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
 	        <h4 class="modal-title" id="myModalLabel">Add Doctor</h4>
@@ -67,23 +100,18 @@
 						</div>
 						<div class="form-group">
 							<label for="">Medical Fields:</label>
-							<!-- <select id="input" ng-options="medField as medField.name for medField in doctorGrid.medFields" ng-model="doctorGrid.doctor.specialties" class="form-control" required="required">
-								<option value="">Select appropriate medical fields</option>
-							</select> -->
-
 							<multiple-autocomplete ng-model="doctorGrid.specialty"
-     						object-property="name"
-     						suggestions-arr="doctorGrid.medFields">
+							object-property="name"
+							suggestions-arr="doctorGrid.medFields"
+								required = "true">
 							</multiple-autocomplete>
-
 						</div>
-
 	      </div>
 	      <div class="modal-footer">
 	        <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
 	        <button type="submit" class="btn btn-primary">Save changes</button>
 	      </div>
-			</form>
+	</form>
     </div>
   </div>
 </div>
