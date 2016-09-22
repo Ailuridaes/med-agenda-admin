@@ -20,72 +20,71 @@
         ////////////////
 
         function addDoctor(doctor) {
-        	var defer = $q.defer();
+            var defer = $q.defer();
 
-        	$http.post(apiUrl + '/doctors/', doctor)
-        		.then(
-        			function(response) {
-        				defer.resolve(response.data);
-        			},
-        			function(error) {
-        				defer.reject(error);
-        				toastr.error('Error adding doctor', 'Error');
-        			}
-        	);
+            $http.post(apiUrl + '/doctors/', doctor)
+                .then(
+                    function(response) {
+                        defer.resolve(response.data);
+                    },
+                    function(error) {
+                        defer.reject(error);
+                        toastr.error('Error adding doctor', 'Error');
+                    }
+                );
 
-        	return defer.promise;
+            return defer.promise;
         }
 
-    	function getAllDoctors() {
-    		var defer = $q.defer();
+        function getAllDoctors() {
+            var defer = $q.defer();
 
-    		$http.get(apiUrl + '/doctors/all')
-    			.then(
-    				function(response) {
-    					defer.resolve(response.data);
-    				},
-    				function(error) {
-    					defer.reject(error);
-    					toastr.error('Error getting doctors', 'Error');
-    				}
-    		);
+            $http.get(apiUrl + '/doctors/all')
+                .then(
+                    function(response) {
+                        defer.resolve(response.data);
+                    },
+                    function(error) {
+                        defer.reject(error);
+                        toastr.error('Error getting doctors', 'Error');
+                    }
+                );
 
-    		return defer.promise;
+            return defer.promise;
         }
 
-    	function getByDoctorId(id) {
-			var defer = $q.defer();
+        function getByDoctorId(id) {
+            var defer = $q.defer();
 
-			$http.get(apiUrl + '/doctors/' + id)
-				.then(
-					function(response) {
-						defer.resolve(response.data);
-					},
-					function(error) {
-						defer.reject(error);
-						toastr.error('Error getting doctor detail', 'Error');
-					}
-            );
+            $http.get(apiUrl + '/doctors/' + id)
+                .then(
+                    function(response) {
+                        defer.resolve(response.data);
+                    },
+                    function(error) {
+                        defer.reject(error);
+                        toastr.error('Error getting doctor detail', 'Error');
+                    }
+                );
 
-    		return defer.promise;
+            return defer.promise;
         }
 
-    	function updateDoctor(doctor) {
-    	    var defer = $q.defer();
+        function updateDoctor(doctor) {
+            var defer = $q.defer();
 
-    		$http.put(apiUrl + '/doctors/' + doctor.doctorId, doctor)
-    			.then(
-    				function() {
-    					defer.resolve();
-    					toastr.success('Successfully updated doctor', 'Saved');
-    				},
-    				function(error) {
-    					defer.reject(error);
-    					toastr.error('Error updating doctor', 'Error');
-    				}
-    		);
+            $http.put(apiUrl + '/doctors/' + doctor.doctorId, doctor)
+                .then(
+                    function() {
+                        defer.resolve();
+                    },
+                    function(error) {
+                        defer.reject(error);
+                        toastr.error('Error updating doctor', 'Error');
+                    }
+                );
 
-    		return defer.promise;
+            return defer.promise;
         }
     }
 })();

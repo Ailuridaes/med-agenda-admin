@@ -1,10 +1,9 @@
-
 .vcenter {
-  display: table-cell;
-  vertical-align: middle;
-  /*text-align: center;*/
+    display: table-cell;
+    vertical-align: middle;
+    /*text-align: center;*/
 }
 
 .verticalButton {
-  vertical-align: middle;
+    vertical-align: middle;
 }

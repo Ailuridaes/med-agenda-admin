@@ -17,20 +17,20 @@
         ////////////////
 
         function getByAssignmentId(id) {
-        	var defer = $q.defer();
-        
-        	$http.get(apiUrl + '/assignments/' + id)
-        		.then(
-        			function(response) {
-        				defer.resolve(response.data);
-        			},
-        			function(error) {
-        				defer.reject(error);
-        				toastr.error('Error getting appointment record detail', 'Error');
-        			}
-        		);
-        
-        	return defer.promise;
+            var defer = $q.defer();
+
+            $http.get(apiUrl + '/assignments/' + id)
+                .then(
+                    function(response) {
+                        defer.resolve(response.data);
+                    },
+                    function(error) {
+                        defer.reject(error);
+                        toastr.error('Error getting appointment record detail', 'Error');
+                    }
+                );
+
+            return defer.promise;
         }
     }
 })();
