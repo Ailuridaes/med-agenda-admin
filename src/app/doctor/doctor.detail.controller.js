@@ -5,14 +5,16 @@
         .module('app')
         .controller('DoctorDetailController', DoctorDetailController);
 
-    DoctorDetailController.$inject = ['doctorFactory', 'assignmentFactory', 'medicalFieldsFactory', '$stateParams', '$ngBootbox'];
+    DoctorDetailController.$inject = ['doctorFactory', 'assignmentFactory', 'medicalFieldsFactory', '$stateParams', 'specialtyFactory', '$q', '$ngBootbox', 'toastr'];
 
     /* @ngInject */
-    function DoctorDetailController(doctorFactory, assignmentFactory, medicalFieldsFactory, $stateParams, $ngBootbox) {
+    function DoctorDetailController(doctorFactory, assignmentFactory, medicalFieldsFactory, $stateParams, specialtyFactory, $q, $ngBootbox, toastr) {
         var vm = this;
         vm.title = 'DoctorDetailController';
 
         // properties
+        var specialty = [];
+        var specialtyDelta = [];
         vm.assignment = {};
         vm.doctorSpecialties = [];
         vm.doctor = {};
@@ -37,7 +39,7 @@
         	doctorFactory.getByDoctorId($stateParams.doctorId).then(
         		function (doctor) {
         			vm.doctor = doctor;
-                    vm.originalDoctor = angular.copy(doctor);
+              vm.originalDoctor = angular.copy(doctor);
         		}
         	);
 
@@ -60,21 +62,50 @@
         }
 
         function updateDoctor(doctor) {
-             if(_.isEqual(doctor,vm.originalDoctor) === false && vm.doctor.isDisabled === vm.originalDoctor.isDisabled && vm.doctorSpecialties === vm.originalDoctor.specialties)
+              console.log(_.differenceBy(vm.originalDoctor.specialties,vm.doctorSpecialties, 'medicalFieldId'));
+             if(_.isEqual(doctor,vm.originalDoctor) === false && vm.doctor.isDisabled === vm.originalDoctor.isDisabled)
              {
                   doctorFactory.updateDoctor(doctor).then(
                       function(){}
                   );
              }
-             else if(vm.doctorSpecialties != vm.originalDoctor.specialties)
+             else if((_.differenceBy(vm.doctorSpecialties, vm.originalDoctor.specialties, 'medicalFieldId')).length != 0)
              {
-                  
-                  function updateSpecialty(specialty) {  
-                    specialtyFactory.update(specialty).then(
-                      function(){}
-                    );
+                  specialtyDelta = _.differenceBy(vm.doctorSpecialties, vm.originalDoctor.specialties, 'medicalFieldId');
+                  var promises = [];
+
+                  for(var i = 0; i < specialtyDelta.length; i++)
+                  {
+                    specialty =    {
+                                        'doctorId' : vm.originalDoctor.doctorId,
+                                        'medicalFieldId' : specialtyDelta[i].medicalFieldId
+                                   };
+
+                     promises.push(specialtyFactory.addSpecialty(specialty));
                   }
-                  console.log("true");
+
+                  $q.all(promises).then(function(specialties){
+                      toastr.success('Successfully added specialty', 'Saved');
+                 });
+             }
+             else if((_.differenceBy(vm.originalDoctor.specialties,vm.doctorSpecialties, 'medicalFieldId')).length != 0)
+             {
+                  specialtyDelta = _.differenceBy(vm.originalDoctor.specialties,vm.doctorSpecialties, 'medicalFieldId');
+                  var promises = [];
+
+                  for(var i = 0; i < specialtyDelta.length; i++)
+                  {
+                    specialty =    {
+                                        'doctorId' : vm.originalDoctor.doctorId,
+                                        'medicalFieldId' : specialtyDelta[i].medicalFieldId
+                                   };
+
+                     promises.push(specialtyFactory.removeSpecialty(specialty));
+                  }
+
+                  $q.all(promises).then(function(specialties){
+                      toastr.success('Successfully deleted specialty', 'Saved');
+                 });
              }
              else if(vm.doctor.isDisabled != vm.originalDoctor.isDisabled)
              {
