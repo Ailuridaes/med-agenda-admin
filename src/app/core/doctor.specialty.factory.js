@@ -61,7 +61,7 @@
                 .then(
                     function() {
                         defer.resolve();
-                        toastr.success('Successfully updated specialty', 'Saved');
+                        // toastr.success('Successfully updated specialty', 'Saved');
                     },
                     function(error) {
                         defer.reject(error);
