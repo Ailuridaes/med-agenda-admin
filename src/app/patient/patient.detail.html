@@ -1,0 +1,194 @@
+<div class="container">
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="patientHeading panel panel-heading">
+                <p class="patientName">{{patientDetail.patient.lastName}}, {{patientDetail.patient.firstName}}</p>
+                <p class="switchP">
+                    <toggle-switch class="toggleSwitch switch-warning switch-large" ng-model="patientDetail.patient.isDisabled" on-label="inactive" off-label="active">
+                    </toggle-switch>
+                </p>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-12">
+            <uib-tabset active="activeJustified" justified="true">
+                <uib-tab class="patientTab" heading="Patient">
+                    <div class="customBody">
+                        <div class="row">
+                            <div class="col-sm-4">
+                                <label>First Name</label>
+                                <br>
+                                <input class="form-control" type="text" ng-model="patientDetail.patient.firstName">
+                            </div>
+                            <div class="col-sm-4">
+                                <label>Last Name</label>
+                                <br>
+                                <input class="form-control" ng-model="patientDetail.patient.lastName">
+                            </div>
+                            <div class="col-sm-4">
+                                <label>Date of Birth</label>
+                                <br>
+                                <input class="form-control" type="text" ng-model="patientDetail.patient.dateOfBirth">
+                            </div>
+                        </div>
+                        <br>
+                        <div class="row">
+                            <div class="col-sm-6">
+                                <label>Telephone</label>
+                                <br>
+                                <input class="form-control" type="text" ng-model="patientDetail.patient.telephone">
+                            </div>
+                            <div class="col-sm-6">
+                                <label>Email</label>
+                                <br>
+                                <input class="form-control" type="text" ng-model="patientDetail.patient.email">
+                            </div>
+                        </div>
+                        <br>
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <label>Address</label>
+                                <br>
+                                <input class="form-control" type="text" ng-model="patientDetail.patient.address">
+                                <br>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-4 col-sm-offset-4">
+                                <button type="submit" ng-click="patientDetail.editPatient(patientDetail.patient)" href="" class="customBtn btn btn-block">update patient info</button>
+                            </div>
+                        </div>
+                    </div>
+                </uib-tab>
+                <uib-tab class="contactTab" heading="Emergency Contacts">
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <div class="customAdd">
+                                <button type="button" class="addBtn btn" data-toggle="modal" data-target="#myModal">+ add contact</button>
+                                <br>
+                                <br>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="customBody" ng-repeat="contact in patientDetail.contacts">
+                        <div class="row">
+                            <div class="col-sm-6">
+                                <label>First Name</label>
+                                <br>
+                                <input class="form-control" type="text" ng-model="contact.firstName">
+                            </div>
+                            <div class="col-sm-6">
+                                <label>Last Name</label>
+                                <br>
+                                <input class="form-control" ng-model="contact.lastName">
+                            </div>
+                        </div>
+                        <br>
+                        <div class="row">
+                            <div class="col-sm-6">
+                                <label>Email</label>
+                                <br>
+                                <input class="form-control" type="text" ng-model="contact.email">
+                            </div>
+                            <div class="col-sm-6">
+                                <label>Telephone</label>
+                                <br>
+                                <input class="form-control" type="text" ng-model="contact.telephone">
+                            </div>
+                        </div>
+                        <br>
+                        <div class="row">
+                            <div class="col-sm-3 col-sm-offset-3">
+                                <button type="submit" ng-click="patientDetail.editContact(contact)" href="" class="customBtn btn btn-block">update contact info</button>
+                            </div>
+                            <div class="col-sm-3">
+                                <button type="submit" ng-click="patientDetail.deleteContact(contact)" href="" class="delBtn btn btn-block">delete contact</button>
+                            </div>
+                        </div>
+                        <br>
+                        <hr>
+                    </div>
+                </uib-tab>
+                <uib-tab class="medicalTab" heading="Medical">
+                    <div class="customBody">
+                        <table class="table">
+                            <tr class="customColorOne">
+                                <td class="col-sm-5"><b>Chronic Conditions</b></td>
+                                <td class="col-sm-7">{{patientDetail.patient.chronicConditions}}</td>
+                            </tr>
+                            <tr class="customColorTwo">
+                                <td><b>Allergies</b></td>
+                                <td>{{patientDetail.patient.allergies}}</td>
+                            </tr>
+                            <tr class="customColorThree">
+                                <td><b>Medications</b> </td>
+                                <td>{{patientDetail.patient.medications}}</td>
+                            </tr>
+                        </table>
+                    </div>
+                </uib-tab>
+                <uib-tab class="aptTab" heading="Appointments">
+                    <div class="customBody">
+                        <table class="table table-striped table-hover">
+                            <thead>
+                                <tr>
+                                    <th>Check-in Date and Time</th>
+                                    <th>Doctor</th>
+                                    <th>Medical Field</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr ng-repeat="aptHistory in patientDetail.patient.patientCheckIns | orderBy: 'time.checkInTime'">
+                                    <td>
+                                        <p>{{aptHistory.checkInTime | date: 'medium'}}</p>
+                                    </td>
+                                    <td ng-repeat="time in aptHistory.assignments">
+                                        <p>{{time.doctorCheckIn.doctor.firstName}} {{time.doctorCheckIn.doctor.lastName}}</p>
+                                    </td>
+                                    <td>
+                                        <p>{{aptHistory.medicalField.name}}</p>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </uib-tab>
+            </uib-tabset>
+        </div>
+    </div>
+</div>
+<div id="myModal" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">Add an Emergency Contact</h4>
+            </div>
+            <div class="modal-body">
+                <label>First Name</label>
+                <br>
+                <input class="form-control" type="text" ng-model="patientDetail.firstName">
+                <br>
+                <br>
+                <label>Last Name</label>
+                <br>
+                <input class="form-control" ng-model="patientDetail.lastName">
+                <br>
+                <br>
+                <label>Email</label>
+                <br>
+                <input class="form-control" type="text" ng-model="patientDetail.email">
+                <br>
+                <br>
+                <label>Telephone</label>
+                <br>
+                <input class="form-control" type="text" ng-model="patientDetail.telephone">
+            </div>
+            <div class="modal-footer">
+                <button type="submit" ng-click="patientDetail.addContact()" data-dismiss="modal" class="btn btn-primary modalButton">Add Contact</button>
+            </div>
+        </div>
+    </div>
+</div>

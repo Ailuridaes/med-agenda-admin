@@ -1,0 +1,54 @@
+<div class="container">
+    <div class="row">
+        <div class="col-sm-12">
+            <uib-tabset active="activeJustified" justified="true">
+                <uib-tab class="contactTab" heading="Checked-In Patients">
+                    <div class="customBody">
+                        <table class="customTable table table-striped table-hover">
+                            <thead>
+                                <tr>
+                                    <th>
+                                        Patient Name
+                                    </th>
+                                    <th>
+                                        Check-In Time
+                                    </th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr ng-repeat="theChecked in patientGrid.checkins | orderBy: 'name'">
+                                    <td class="col-sm-6 ">
+                                        <p><a ui-sref="patient.detail({patientId: theChecked.patient.patientId })">{{theChecked.patient.lastName}}, {{theChecked.patient.firstName}}</a></p>
+                                    </td>
+                                    <td>
+                                        <p>{{theChecked.checkInTime | date: 'medium'}}</p>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </uib-tab>
+                <uib-tab class="medicalTab" heading="All Patients">
+                    <div class="customBody">
+                        <table class="customTable table table-striped table-hover">
+                            <thead>
+                                <tr>
+                                    <th class="col-sm-6">
+                                        Patient Name
+                                    </th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr ng-repeat="thePatient in patientGrid.patients | orderBy: 'lastName'">
+                                    <td class="col-sm-6">
+                                        <p><a ui-sref="patient.detail({patientId: thePatient.patientId })">{{thePatient.lastName}}, {{thePatient.firstName}}</a></p>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </uib-tab>
+            </uib-tabset>
+        </div>
+    </div>
+</div>

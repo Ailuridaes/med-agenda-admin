@@ -1,40 +1,55 @@
 <!DOCTYPE html>
-<html ng-app="app" lang="en">
+<html ng-app="medApp" lang="en">
+
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>MedAgenda Doctor Application</title>
-
-  <!-- bower:css -->
-  <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css" />
-  <link rel="stylesheet" href="bower_components/toastr/toastr.css" />
-  <!-- endbower -->
-  <!-- inject:css -->
-  <link rel="stylesheet" href="styles/style.css">
-  <!-- endinject -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>MedAgenda Doctor Application</title>
+    <!-- bower:css -->
+    <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css" />
+    <link rel="stylesheet" href="https://npmcdn.com/angular-toastr/dist/angular-toastr.css" />
+    <link rel="stylesheet" href="bower_components/angular-bootstrap/ui-bootstrap-csp.css">
+    <link rel="stylesheet" href="bower_components/angular-bootstrap-toggle-switch/style/bootstrap3/angular-toggle-switch-bootstrap-3.css">
+    <!-- endbower -->
+    <!-- inject:css -->
+    <link rel="stylesheet" href="styles/style.css">
+    <!-- endinject -->
 </head>
+
 <body>
-  <div ng-include="'app/layout/navbar.html'"></div>
+
+    <div ng-include="'app/layout/navbar.html'"></div>
+ <div class="row">
+   <div class="col-sm-2 col-md-2 col-lg-2">
+     <div ng-include="'app/layout/sidebar.html'"></div>
+   </div>
+   <div class="col-sm-10 col-md-10 col-lg-10">
+     <div ui-view></div>
+   </div>
+ </div>
 
 
-  <ui-view></ui-view>
-
-
-
-  <!-- bower:js -->
-  <script src="bower_components/angular/angular.js"></script>
-  <script src="bower_components/angular-ui-router/release/angular-ui-router.js"></script>
-  <script src="bower_components/jquery/dist/jquery.js"></script>
-  <script src="bower_components/bootbox/bootbox.js"></script>
-  <script src="bower_components/ngBootbox/dist/ngBootbox.js"></script>
-  <script src="bower_components/toastr/toastr.js"></script>
-  <!-- endbower -->
-  <!-- inject:js -->
-  <script src="app/app.js"></script>
-  <script src="app/core/data.factory.js"></script>
-  <script src="app/core/values.js"></script>
-  <script src="app/feature/feature.controller.js"></script>
-  <!-- endinject -->
+    <!-- bower:js -->
+    <script src="bower_components/angular/angular.js"></script>
+    <script src="bower_components/jquery/dist/jquery.js"></script>
+    <script src="bower_components/bootstrap/dist/js/bootstrap.js"></script>
+    <script src="bower_components/angular-ui-router/release/angular-ui-router.js"></script>
+    <script src="https://npmcdn.com/angular-toastr/dist/angular-toastr.tpls.js"></script>
+    <script src="bower_components/bootbox/bootbox.js"></script>
+    <script src="bower_components/ngBootbox/dist/ngBootbox.js"></script>
+    <script src="bower_components/angular-bootstrap/ui-bootstrap-tpls.js"></script>
+    <script src="bower_components/angular-bootstrap-toggle-switch/angular-toggle-switch.js"></script>
+    <!-- endbower -->
+    <!-- inject:js -->
+    <script src="app/app.js"></script>
+    <script src="app/core/emergency.contact.factory.js"></script>
+    <script src="app/core/patient.factory.js"></script>
+    <script src="app/core/patient.checkin.factory.js"></script>
+    <script src="app/core/values.js"></script>
+    <script src="app/patient/patient.grid.controller.js"></script>
+    <script src="app/patient/patient.detail.controller.js"></script>
+    <!-- endinject -->
 </body>
+
 </html>

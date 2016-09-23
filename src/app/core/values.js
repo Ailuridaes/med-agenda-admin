@@ -2,6 +2,6 @@
     'use strict';
 
     angular
-        .module('app')
+        .module('medApp')
         .value('apiUrl', "http://localhost:61490/api");
 })();
