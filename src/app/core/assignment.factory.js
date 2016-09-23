@@ -18,7 +18,7 @@
 
         function getByAssignmentId(id) {
         	var defer = $q.defer();
-        
+
         	$http.get(apiUrl + '/assignments/' + id)
         		.then(
         			function(response) {
@@ -29,7 +29,7 @@
         				toastr.error('Error getting appointment record detail', 'Error');
         			}
         		);
-        
+
         	return defer.promise;
         }
     }

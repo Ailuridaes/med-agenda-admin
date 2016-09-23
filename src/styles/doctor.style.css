@@ -1,3 +1,18 @@
-/*========================================
-*   Panel
-=========================================*/
+/*.vcenter {
+    display: table-cell;
+    vertical-align: middle;
+}
+
+.verticalButton {
+    vertical-align: middle;
+}*/
+
+.ats-switch.switch-warning span.switch-left {
+   background: #e0301e ;
+   color: #fff;
+}
+
+.ats-switch.switch-warning span.switch-right {
+   background: #a0cc65 ;
+   color: #fff;
+}

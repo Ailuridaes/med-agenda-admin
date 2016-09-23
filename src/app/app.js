@@ -2,14 +2,15 @@
     'use strict';
 
     angular
-        .module('app', [ 
+        .module('app', [
             'ui.router',
             'toastr',
             'ngBootbox',
             'ui.bootstrap',
             'chart.js',
             'multipleSelect',
-            'uiRouterStyles'
+            'uiRouterStyles',
+            'toggle-switch'
         ])
 
         // Configure all charts
@@ -17,14 +18,14 @@
 
             ChartJsProvider.setOptions({
               chartColors: [
-                  '#FF5252', 
-                  '#0000FF', 
-                  '#803690', 
-                  '#00ADF9', 
-                  '#DCDCDC', 
-                  '#46BFBD', 
-                  '#FDB45C', 
-                  '#949FB1', 
+                  '#FF5252',
+                  '#0000FF',
+                  '#803690',
+                  '#00ADF9',
+                  '#DCDCDC',
+                  '#46BFBD',
+                  '#FDB45C',
+                  '#949FB1',
                   '#4D5360'
               ],
               labels: {
@@ -36,7 +37,7 @@
             ChartJsProvider.setOptions(
                 // Show lines for line graphs
                 'line', {
-                  showLines: true,   
+                  showLines: true,
                 },
                 // Show legend for pie charts
                 'pie', {
@@ -64,7 +65,7 @@
                 .state('admin', {
                     url: '/admin',
                     abstract: true,
-                    templateUrl: '/app/layout/admin.shell.html'                   
+                    templateUrl: '/app/layout/admin.shell.html'
                 })
                     // Admin dashboard  page
                     .state('admin.dashboard', {
@@ -89,8 +90,8 @@
                            controller: 'PatientDetailController as patientDetail',
                            templateUrl: 'app/patient/patient.detail.html'
                        })
-               
-            /////// DOCTOR STATE  ////////           
+
+            /////// DOCTOR STATE  ////////
                     .state('admin.doctor', {
                        url: '/doctor',
                        abstract: true,
