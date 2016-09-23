@@ -2,7 +2,7 @@
     'use strict';
 
     angular
-        .module('medApp')
+        .module('app')
         .factory('patientFactory', patientFactory);
 
     //injecting parameters to the factory

@@ -2,7 +2,7 @@
     'use strict';
 
     angular
-        .module('medApp')
+        .module('app')
         .controller('PatientDetailController', PatientDetailController);
 
     //injecting movie factory to search controller

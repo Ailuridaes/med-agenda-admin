@@ -2,7 +2,7 @@
     'use strict';
 
     angular
-        .module('medApp')
+        .module('app')
         .controller('PatientGridController', PatientGridController);
 
     //injecting movie factory to search controller
@@ -17,15 +17,18 @@
             patientFactory.getPatients().then(
                 function(patients) {
                     vm.patients = patients;
+                    // console.log(patients);
+                   
                 },
                 function(error) {}
             );
         }
 
         function activateAgain() {
-            patientCheckInFactory.getPatientCheckIns().then(
+            patientCheckInFactory.getActivePatientCheckIns().then(
                 function(checkins) {
                     vm.checkins = checkins;
+                    console.log(checkins);
                 },
                 function(error) {}
             );

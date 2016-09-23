@@ -117,7 +117,7 @@
 .btn.active,
 .btn:active:focus .open>.dropdown-toggle.btn {
     color: white;
-    background-color: #51a488;
+    opacity:0.8;
 }
 
 .customColorOne,
@@ -152,6 +152,43 @@
     border: 0px;
 }
 
+.ats-switch.switch-warning span.switch-left {
+    background: #e0301e;
+    color: #fff;
+}
+
+.ats-switch.switch-warning span.switch-right {
+    background: #a0cc65;
+    color: #fff;
+}
+
+.one {
+	background-color: #459a4a;
+}
+
+.two {
+	background-color: #bed44e;
+}
+
+.three {
+	background-color: #ffea6e;
+}
+
+.four {
+	background-color: #ffaf03;
+}
+
+.five {
+	background-color: #ff1d35;
+}
+
+.six {
+	background-color: #c11919;
+}
+
+.patientList {
+	color: #5c5c5c;
+}
 
 /* ================================= 
   Base Layout Styles

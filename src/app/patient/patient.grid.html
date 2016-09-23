@@ -4,7 +4,7 @@
             <uib-tabset active="activeJustified" justified="true">
                 <uib-tab class="contactTab" heading="Checked-In Patients">
                     <div class="customBody">
-                        <table class="customTable table table-striped table-hover">
+                        <table class="customTable table">
                             <thead>
                                 <tr>
                                     <th>
@@ -16,9 +16,9 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr ng-repeat="theChecked in patientGrid.checkins | orderBy: 'name'">
+                                <tr ng-repeat="theChecked in patientGrid.checkins | orderBy: '!painScale'" ng-class="{one: theChecked.painScale == 1, two: theChecked.painScale == 2, three: theChecked.painScale == 3, four: theChecked.painScale == 4, five: theChecked.painScale == 5, six: theChecked.painScale == 6}">
                                     <td class="col-sm-6 ">
-                                        <p><a ui-sref="patient.detail({patientId: theChecked.patient.patientId })">{{theChecked.patient.lastName}}, {{theChecked.patient.firstName}}</a></p>
+                                        <p><a class="patientList" ui-sref="patient.detail({patientId: theChecked.patient.patientId })">{{theChecked.patient.lastName}}, {{theChecked.patient.firstName}}</a></p>
                                     </td>
                                     <td>
                                         <p>{{theChecked.checkInTime | date: 'medium'}}</p>
@@ -30,7 +30,7 @@
                 </uib-tab>
                 <uib-tab class="medicalTab" heading="All Patients">
                     <div class="customBody">
-                        <table class="customTable table table-striped table-hover">
+                        <table class="customTable table table-hover">
                             <thead>
                                 <tr>
                                     <th class="col-sm-6">
