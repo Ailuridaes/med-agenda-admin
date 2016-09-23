@@ -19,7 +19,7 @@
             var deferred = $q.defer();
 
             //communicating with the api
-            $http.get('http://localhost:61490/api/patientcheckins').then(
+            $http.get(apiUrl + '/patientcheckins').then(
                 function(response) {
                     deferred.resolve(response.data);
                 },

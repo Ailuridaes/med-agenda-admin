@@ -5,10 +5,10 @@
         .module('app')
         .controller('DoctorDetailController', DoctorDetailController);
 
-    DoctorDetailController.$inject = ['doctorFactory', 'assignmentFactory', 'medicalFieldsFactory', '$stateParams', 'specialtyFactory', '$q', '$ngBootbox', 'toastr'];
+    DoctorDetailController.$inject = ['doctorFactory', 'medicalFieldsFactory', 'patientCheckInFactory', '$stateParams', 'specialtyFactory', '$q', '$ngBootbox', 'toastr'];
 
     /* @ngInject */
-    function DoctorDetailController(doctorFactory, assignmentFactory, medicalFieldsFactory, $stateParams, specialtyFactory, $q, $ngBootbox, toastr) {
+    function DoctorDetailController(doctorFactory, medicalFieldsFactory, patientCheckInFactory, $stateParams, specialtyFactory, $q, $ngBootbox, toastr) {
         var vm = this;
         vm.title = 'DoctorDetailController';
 
@@ -29,12 +29,6 @@
         ////////////////
 
         function activate() {
-
-            assignmentFactory.getByAssignmentId().then(
-                function(assignment) {
-                    vm.assignment = assignment;
-                }
-            );
 
             doctorFactory.getByDoctorId($stateParams.doctorId).then(
                 function(doctor) {

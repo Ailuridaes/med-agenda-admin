@@ -1,61 +1,87 @@
 <div class="col-sm-9 col-sm-offset-3 col-lg-10 col-lg-offset-2 main">
-<br>
-
-    <div class="panel panel-default">
-        <form class="" ng-submit="doctorDetail.updateDoctor(doctorDetail.doctor)">
-            <div class="panel-heading clearfix">
-                <h3 class="panel-title pull-left" id="panelTitle">{{doctorDetail.doctor.lastName}},
-                    {{doctorDetail.doctor.firstName}}, M.D.</h3>
-                <a ui-sref="admin.doctor.grid" type="button" class="close">
-                    <span>&times;</span>
-                </a>
+    <br>
+    <uib-tabset active="activeJustified" justified="true">
+        <uib-tab index="0" heading="Doctor Personal Information">
+            <div class="panel panel-default">
+                <form class="" ng-submit="doctorDetail.updateDoctor(doctorDetail.doctor)">
+                    <div class="panel-heading clearfix">
+                        <h3 class="panel-title pull-left" id="panelTitle">{{doctorDetail.doctor.lastName}},
+                            {{doctorDetail.doctor.firstName}}, M.D.</h3>
+                        <a ui-sref="admin.doctor.grid" type="button" class="close">
+                            <span>&times;</span>
+                        </a>
+                    </div>
+                    <div class="panel-body">
+                        <div class="row">
+                            <div class="col-xs-6 col-lg-6">
+                                <div class="form-group">
+                                    <label for="">First Name</label>
+                                    <input ng-model="doctorDetail.doctor.firstName" type="text" class="form-control" id="">
+                                </div>
+                            </div>
+                            <div class="col-xs-6 col-lg-6">
+                                <div class="form-group">
+                                    <label for="">Last Name</label>
+                                    <input ng-model="doctorDetail.doctor.lastName" type="text" class="form-control" id="">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-xs-6 col-lg-6">
+                                <div class="form-group">
+                                    <label for="">Email Address</label>
+                                    <input ng-model="doctorDetail.doctor.email" type="text" class="form-control" id="">
+                                </div>
+                            </div>
+                            <div class="col-xs-6 col-lg-6">
+                                <div class="form-group">
+                                    <label for="">Telephone</label>
+                                    <input ng-model="doctorDetail.doctor.telephone" type="text" class="form-control" id="">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="">Specialties</label>
+                            <multiple-autocomplete ng-model="doctorDetail.doctorSpecialties" object-property="name" suggestions-arr="doctorDetail.medFields"></multiple-autocomplete>
+                        </div>
+                        <div class="">
+                            <label for="">Active Status</label>
+                        </div>
+                        <div class="">
+                            <toggle-switch ng-model="doctorDetail.doctor.isDisabled" on-label="Yes" off-label="No" class="switch-warning"></toggle-switch>
+                        </div>
+                    </div>
+                    <div class="panel-footer">
+                        <a ui-sref="admin.doctor.grid" type="button" class="btn btn-default">Cancel</a>
+                        <button type="submit" class="btn btn-primary">Submit Changes</button>
+                    </div>
+                </form>
             </div>
-            <div class="panel-body">
-                <div class="row">
-                    <div class="col-xs-6 col-lg-6">
-                        <div class="form-group">
-                            <label for="">First Name</label>
-                            <input ng-model="doctorDetail.doctor.firstName" type="text" class="form-control" id="">
-                        </div>
-                    </div>
-                    <div class="col-xs-6 col-lg-6">
-                        <div class="form-group">
-                            <label for="">Last Name</label>
-                            <input ng-model="doctorDetail.doctor.lastName" type="text" class="form-control" id="">
-                        </div>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-xs-6 col-lg-6">
-                        <div class="form-group">
-                            <label for="">Email Address</label>
-                            <input ng-model="doctorDetail.doctor.email" type="text" class="form-control" id="">
-                        </div>
-                    </div>
-                    <div class="col-xs-6 col-lg-6">
-                        <div class="form-group">
-                            <label for="">Telephone</label>
-                            <input ng-model="doctorDetail.doctor.telephone" type="text" class="form-control" id="">
-                        </div>
-                    </div>
-                </div>
-                <div class="form-group">
-                    <label for="">Specialties</label>
-                    <multiple-autocomplete ng-model="doctorDetail.doctorSpecialties" object-property="name" suggestions-arr="doctorDetail.medFields"></multiple-autocomplete>
-                </div>
-                <div class="">
-                    <label for="">Active Status</label>
-                </div>
-                <div class="">
-                    <toggle-switch ng-model="doctorDetail.doctor.isDisabled" on-label="Yes" off-label="No" class="switch-warning"></toggle-switch>
-                </div>
-            </div>
-            <div class="panel-footer">
-                <a ui-sref="admin.doctor.grid" type="button" class="btn btn-default">Cancel</a>
-                <button type="submit" class="btn btn-primary">Submit Changes</button>
-            </div>
-        </form>
-    </div>
+        </uib-tab>
+        <uib-tab index="1" heading="Doctor Appointment History">
+             <table class="table table-hover">
+                       <thead>
+                           <tr>
+                                <th>Date</th>
+                                <th>Patient Name</th>
+                                <th>Symptoms</th>
+                           </tr>
+                       </thead>
+                       <tbody ng-repeat="history in doctorDetail.doctor.doctorCheckIns">
+                           <tr ng-repeat="appointment in history.assignments">
+                                <td>{{appointment.startTime | date: 'medium'}}</td>
+                                <td>
+                                     {{appointment.patientCheckIn.patient.firstName}},
+                                     {{appointment.patientCheckIn.patient.firstName}}
+                                </td>
+                                <td>
+                                     {{appointment.patientCheckIn.symptoms}}
+                                </td>
+                           </tr>
+                       </tbody>
+             </table>
+        </uib-tab>
+    </uib-tabset>
 </div>
 
 <div ui-view></div>
