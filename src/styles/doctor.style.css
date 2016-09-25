@@ -1,18 +1,30 @@
-/*.vcenter {
-    display: table-cell;
-    vertical-align: middle;
-}
-
-.verticalButton {
-    vertical-align: middle;
-}*/
-
-.ats-switch.switch-warning span.switch-left {
-   background: #e0301e ;
+/****************************************
+***Doctor detail toggle-switch styling***
+****************************************/
+.ats-switch.switch-warning-doc span.switch-left {
+   background: #a0cc65;
    color: #fff;
 }
 
-.ats-switch.switch-warning span.switch-right {
-   background: #a0cc65 ;
+.ats-switch.switch-warning-doc span.switch-right {
+   background: #e0301e;
    color: #fff;
+}
+
+/****************************************
+***Doctor grid inactive table styling***
+****************************************/
+#inactiveDoctor {
+     background-color: #f5f5f5;
+}
+
+/******************************
+***Doctor grid modal styling***
+******************************/
+.doctorModal {
+     background-color: #30a5ff;
+}
+
+#myModalLabel {
+     color: #fff;
 }

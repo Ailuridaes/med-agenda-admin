@@ -3,4 +3,3 @@ thumbs.db
 node_modules/
 src/bower_components/
 **/secrets/
-src/app/core/values.js
