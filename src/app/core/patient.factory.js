@@ -23,7 +23,7 @@
             var deferred = $q.defer();
 
             //communicating with the api
-            $http.get(apiUrl + '/patients').then(
+            $http.get(apiUrl + '/patients/').then(
                 function(response) {
                     deferred.resolve(response.data);
                 },
@@ -41,7 +41,7 @@
             var deferred = $q.defer();
 
             //communicating with the api
-            $http.get(apiUrl + '/patients' + id).then(
+            $http.get(apiUrl + '/patients/' + id).then(
                 function(response) {
                     deferred.resolve(response.data);
                 },
@@ -60,7 +60,7 @@
             var deferred = $q.defer();
 
             //communicating with the api
-            $http.post(apiUrl + '/patients', patient).then(
+            $http.post(apiUrl + '/patients/', patient).then(
                 function(response) {
                     toastr.success('The patient was successfully added to the database.');
                     deferred.resolve(response.data);
@@ -79,7 +79,7 @@
             var deferred = $q.defer();
 
             //communicating with the api
-            $http.put(apiUrl + '/patients' + patient.patientId, patient).then(
+            $http.put(apiUrl + '/patients/' + patient.patientId, patient).then(
                 function(response) {
                     toastr.success("This patient's information has been successfully edited.");
                     deferred.resolve(response.data);
@@ -98,7 +98,7 @@
             var deferred = $q.defer();
 
             //communicating with the api
-            $http.delete(apiUrl + '/patients' + patient.patientId).then(
+            $http.delete(apiUrl + '/patients/' + patient.patientId).then(
                 function(response) {
                     toastr.success('This patient was successfully removed from the database.');
                     deferred.resolve(response.data);
