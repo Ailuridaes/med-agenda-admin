@@ -42,6 +42,7 @@
     "lodash": "^4.16.1"
   },
   "resolutions": {
-    "jquery": ">=1.6.3 <3"
+    "jquery": ">=1.6.3 <3",
+    "angular-ui-router": "^0.3.1"
   }
 }
