@@ -1,3 +1,218 @@
+.toggleSwitch {
+    margin-top: 4px;
+    float: right;
+    border: 1px solid #969393;
+}
+
+.patientName {
+    font-size: 35px;
+    font-weight: bold;
+    color: white;
+    text-shadow: 1px 1px #8b8888;
+}
+
+.switchP,
+.patientName {
+    display: inline;
+}
+
+.patientHeading {
+    background-color: #66cdaa;
+    border-radius: 10px;
+    margin-bottom: 40px;
+    box-shadow: 4px 4px 10px rgba(0, 0, 0, .3), -4px 4px 10px rgba(0, 0, 0, .3);
+}
+
+.patientTab,
+.contactTab,
+.medicalTab,
+.aptTab {
+    font-weight: bold;
+}
+
+.patientTab {
+    background-color: #b5005b;
+}
+
+.contactTab {
+    background-color: #f9af51;
+}
+
+.medicalTab {
+    background-color: #b2e371;
+}
+
+.aptTab {
+    background-color: #ff6f69;
+}
+
+.uib-tab a {
+    color: white;
+}
+
+.nav-tabs > li.active > a {
+    color: #252839;
+}
+
+.nav-tabs.nav-justified > li > a {
+    border-radius: 0px;
+}
+
+.customBody {	
+	color: #252839;
+	margin-top: -15px;
+	margin-left: -15px;
+	border-bottom: 1px solid #ddd;
+	border-left: 1px solid #ddd;
+	border-right: 1px solid #ddd;
+	width: 102.75%;
+	padding: 20px;
+	background-color: white;
+}
+
+.customAdd {
+
+	color: #252839;
+	margin-top: -15px;
+	margin-left: -15px;
+	border-left: 1px solid #ddd;
+	border-right: 1px solid #ddd;
+	width: 102.75%;
+	padding: 20px;
+	background-color: white;
+
+}
+
+.panel-body > .customBody {
+    border-bottom: 1px solid black;
+    box-shadow: 4px 4px 10px rgba(0, 0, 0, .3), -4px 4px 10px rgba(0, 0, 0, .3);
+}
+
+.customBtn {
+    background-color: #66cdaa;
+    color: white;
+    border: none;
+    box-shadow: -3px 4px 8px rgba(0, 0, 0, .5);
+}
+
+.addBtn {
+	float: right;
+    background-color: #a0cc65;
+    color: white;
+    border: none;
+    box-shadow: -3px 4px 8px rgba(0, 0, 0, .5);
+}
+
+.delBtn {
+	float: right;
+    background-color: #e0301e;
+    color: white;
+    border: none;
+    box-shadow: -3px 4px 8px rgba(0, 0, 0, .5);
+}
+
+.btn:hover,
+.btn:focus,
+.btn:active,
+.btn.active,
+.btn:active:focus .open>.dropdown-toggle.btn {
+    color: white;
+    opacity:0.8;
+}
+
+.customColorOne,
+.customColorTwo,
+.customColorThree {
+	color: #5c5c5c;
+}
+
+.customColorOne {
+	background-color: #9fdfbf;
+}
+
+.customColorTwo {
+	background-color: #d6ef90;
+}
+
+.customColorThree {
+	background-color: #deacde;
+}
+
+.table-striped>tbody>tr:nth-child(odd)>td,
+.table-striped>tbody>tr:nth-child(odd)>th {
+    color: #5c5c5c;
+    background-color: #9fdfbf;
+    border: 0px;
+}
+
+.table-striped>tbody>tr:nth-child(even)>td,
+.table-striped>tbody>tr:nth-child(even)>th {
+    color: #5c5c5c;
+    background-color: #d6ef90;
+    border: 0px;
+}
+
+.ats-switch.switch-warning span.switch-left {
+    background: #e0301e;
+    color: #fff;
+}
+
+.ats-switch.switch-warning span.switch-right {
+    background: #a0cc65;
+    color: #fff;
+}
+
+.one {
+	background-color: #459a4a;
+    opacity: .8;
+}
+
+.two {
+	background-color: #bed44e;
+    opacity: .8;
+}
+
+.three {
+	background-color: #ffea6e;
+    opacity: .8;
+}
+
+.four {
+	background-color: #ffaf03;
+    opacity: .8;
+}
+
+.five {
+	background-color: #ff1d35;
+    opacity: .8;
+}
+
+.six {
+	background-color: #c11919;
+    opacity: .8;
+}
+
+.patientList {
+	color: black;
+}
+
+.aBox {
+    float: right;
+    padding: 5px;
+    display: inline-block;
+    color: black;
+    font-weight: bold;
+    text-align: center;
+}
+
+.colorContainer {
+    background-color: white;
+}
+
+.hiBtn {
+    margin-left: 10px;
+}
+
 /* ================================= 
   Base Layout Styles
 ==================================== */
@@ -268,6 +483,10 @@ fieldset[disabled] .btn-danger.active {
     border-color: #f9243f;
 }
 
+.panel-danger {
+    background-color: #f9243f;
+}
+
 
 /*========================================
 *   Backgrounds
@@ -338,198 +557,6 @@ a.bg-danger:hover {
 /*========================================
 *   Panels
 =========================================*/
-
-.toggleSwitch {
-    margin-top: 4px;
-    float: right;
-    border: 1px solid #969393;
-}
-
-.patientName {
-    font-size: 35px;
-    font-weight: bold;
-    color: white;
-    text-shadow: 1px 1px #8b8888;
-}
-
-.switchP,
-.patientName {
-    display: inline;
-}
-
-.patientHeading {
-    background-color: #66cdaa;
-    border-radius: 10px;
-    margin-bottom: 40px;
-    box-shadow: 4px 4px 10px rgba(0, 0, 0, .3), -4px 4px 10px rgba(0, 0, 0, .3);
-}
-
-.patientTab,
-.contactTab,
-.medicalTab,
-.aptTab {
-    font-weight: bold;
-}
-
-.patientTab {
-    background-color: #b5005b;
-}
-
-.contactTab {
-    background-color: #f9af51;
-}
-
-.medicalTab {
-    background-color: #b2e371;
-}
-
-.aptTab {
-    background-color: #ff6f69;
-}
-
-.uib-tab a {
-    color: white;
-}
-
-.nav-tabs > li.active > a {
-    color: #252839;
-}
-
-.nav-tabs.nav-justified > li > a {
-    border-radius: 0px;
-}
-
-.customBody {   
-    color: #252839;
-    margin-top: -15px;
-    margin-left: -15px;
-    border-bottom: 1px solid #ddd;
-    border-left: 1px solid #ddd;
-    border-right: 1px solid #ddd;
-    width: 102.75%;
-    padding: 20px;
-    background-color: white;
-}
-
-.customAdd {
-
-    color: #252839;
-    margin-top: -15px;
-    margin-left: -15px;
-    border-left: 1px solid #ddd;
-    border-right: 1px solid #ddd;
-    width: 102.75%;
-    padding: 20px;
-    background-color: white;
-
-}
-
-.panel-body > .customBody {
-    border-bottom: 1px solid black;
-    box-shadow: 4px 4px 10px rgba(0, 0, 0, .3), -4px 4px 10px rgba(0, 0, 0, .3);
-}
-
-.customBtn {
-    background-color: #66cdaa;
-    color: white;
-    border: none;
-    box-shadow: -3px 4px 8px rgba(0, 0, 0, .5);
-}
-
-.addBtn {
-    float: right;
-    background-color: #a0cc65;
-    color: white;
-    border: none;
-    box-shadow: -3px 4px 8px rgba(0, 0, 0, .5);
-}
-
-.delBtn {
-    float: right;
-    background-color: #e0301e;
-    color: white;
-    border: none;
-    box-shadow: -3px 4px 8px rgba(0, 0, 0, .5);
-}
-
-.btn:hover,
-.btn:focus,
-.btn:active,
-.btn.active,
-.btn:active:focus .open>.dropdown-toggle.btn {
-    color: white;
-    opacity:0.8;
-}
-
-.customColorOne,
-.customColorTwo,
-.customColorThree {
-    color: #5c5c5c;
-}
-
-.customColorOne {
-    background-color: #9fdfbf;
-}
-
-.customColorTwo {
-    background-color: #d6ef90;
-}
-
-.customColorThree {
-    background-color:   #deacde;
-}
-
-.table-striped>tbody>tr:nth-child(odd)>td,
-.table-striped>tbody>tr:nth-child(odd)>th {
-    color: #5c5c5c;
-    background-color: #9fdfbf;
-    border: 0px;
-}
-
-.table-striped>tbody>tr:nth-child(even)>td,
-.table-striped>tbody>tr:nth-child(even)>th {
-    color: #5c5c5c;
-    background-color: #d6ef90;
-    border: 0px;
-}
-
-.ats-switch.switch-warning span.switch-left {
-    background: #e0301e;
-    color: #fff;
-}
-
-.ats-switch.switch-warning span.switch-right {
-    background: #a0cc65;
-    color: #fff;
-}
-
-.one {
-    background-color: #459a4a;
-}
-
-.two {
-    background-color: #bed44e;
-}
-
-.three {
-    background-color: #ffea6e;
-}
-
-.four {
-    background-color: #ffaf03;
-}
-
-.five {
-    background-color: #ff1d35;
-}
-
-.six {
-    background-color: #c11919;
-}
-
-.patientList {
-    color: #5c5c5c;
-}
 
 .panel {
     border: 0;
